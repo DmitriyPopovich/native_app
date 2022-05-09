@@ -1,20 +1,35 @@
+import React, {useState} from 'react';
+import {View, StyleSheet, Text, TouchableOpacity} from "react-native"
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {TodoScreen} from './src/screens/todo/TodoScreen'
+import {FilmsScreen} from './src/screens/films/'
+
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Tab.Navigator
+          screenOptions={{
+            tabBarAllowFontScaling: true,
+            tabBarLabelStyle: {
+              fontSize: 22
+            },
+            tabBarIcon: () => {return},
+            tabBarActiveTintColor: "tomato",
+            tabBarInactiveTintColor: "gray",
+        }}
+        >
+          <Tab.Screen name="Todo App" component={TodoScreen} />
+          <Tab.Screen name="Film Catalog" component={FilmsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
