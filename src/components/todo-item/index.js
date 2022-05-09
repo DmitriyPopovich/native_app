@@ -1,2 +1,2 @@
-import {TodoItem} from './todo-item'
-export {TodoItem}
+import TodoItem from './TodoItem'
+export default TodoItem
